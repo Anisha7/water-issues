@@ -1,0 +1,15 @@
+<!-- problems-show.handlebars -->
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+      <h1>{{problem.title}}</h1>
+      <img src="{{problem.imagePath}}">
+      <h2>{{problem.description}}</h2>
+      <p><a href="/movies/{{movies}}/reviews/{{review._id}}/edit">Edit</a></p>
+    <p>
+        <form method="POST" action="/movies/{{movies}}/reviews/{{review._id}}?_method=DELETE">
+            <button class="btn btn-primary" type="submit">Delete</button>
+        </form>
+    </p>
+  </div>
+</div>
