@@ -17,6 +17,7 @@ const Solution = require('./models/solution.js');
 const Comment = require('./models/comment.js');
 const User = require('./models/user.js');
 // controllers
+const login = require('./controllers/login.js')
 const problems = require('./controllers/problems.js');
 
 // app specifications
@@ -27,6 +28,7 @@ app.set('view engine', 'handlebars');
 
 // request handling, server calls
 problems(app);
+login(app);
 
 // host app
 module.exports = app.listen(port, () => {
