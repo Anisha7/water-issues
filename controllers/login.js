@@ -52,6 +52,7 @@ module.exports = function (app) {
     app.post('/login', function (req, res, next) {
         // Email and Password are not empty
         console.log(req.body);
+        // WHY IS req.body empty???
         console.log(req.body.username);
         console.log(req.body.password);
           if (req.body.username && req.body.password) {
