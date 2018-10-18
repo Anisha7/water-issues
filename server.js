@@ -52,6 +52,15 @@ app.use(session({
   })
 }));
 
+// Make user ID available in handlebar templates
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.session.userId;
+  console.log(req.session);
+  console.log(res.locals.currentUser);
+  next();
+});
+
+
 app.use(methodOverride('_method'))
 
 // request handling, server calls
