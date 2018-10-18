@@ -48,13 +48,28 @@ module.exports = function (app) {
 
     });
 
+    app.get('/logout', function(req, res, next) {
+      req.session.userId = null;
+      if (req.session) {
+        // delete session object
+        req.session.destroy(function(err) {
+          if(err) {
+            return next(err);
+          } else {
+            loggedIn = false;
+            return res.redirect('/login');
+          }
+        });
+      }
+    });
+
     // posting information
     app.post('/login', function (req, res, next) {
-        // Email and Password are not empty
-        console.log(req.body);
-        // WHY IS req.body empty???
-        console.log(req.body.username);
-        console.log(req.body.password);
+          // Email and Password are not empty
+          console.log(req.body);
+          // WHY IS req.body empty???
+          console.log(req.body.username);
+          console.log(req.body.password);
           if (req.body.username && req.body.password) {
 
             // Attempt Authentication
@@ -78,4 +93,22 @@ module.exports = function (app) {
             return next(err);
           }
     });
+
+    app.post('/signup', function (req, res, next) {
+        if (
+          req.body.username &&
+          req.body.password ) {
+              // Attempt Authentication
+              User.authenticate(req.body.username, req.body.password, function(error, user){
+                    if (error || !user) {
+                        addNewUser(req, res, next);
+                        loggedIn = true;
+                    }
+              });
+         } else {
+           var err = new Error('All fields required.');
+           err.status = 400;
+           return next(err);
+         }
+    })
 }

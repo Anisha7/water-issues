@@ -1,0 +1,15 @@
+<div class = "my-container new-prob">
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3 full">
+    <form method="POST" action="/feed">
+      {{> problem-form}}
+      <input type="hidden" name="userId" value="{{userId}}">
+      <!-- BUTTON -->
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Save Problem</button>
+        <button class="btn btn-primary" href="../">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
