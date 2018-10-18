@@ -1,3 +1,6 @@
+const User = require('../models/user');
+const session = require('express-session');
+
 var loggedIn = false;
 
 function addNewUser(req, res, next) {
