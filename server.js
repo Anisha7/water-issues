@@ -6,9 +6,18 @@ var exphbs = require('express-handlebars');
 // mongoose
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
+const MongoStore = require('connect-mongo')(session);
+const db = mongoose.connection;
+
+// login
+const session = require('express-session');
+
+// INITIALIZE BODY-PARSER AND ADD IT TO APP
+const bodyParser = require('body-parser');
 
 // starting express server
 const express = require('express')
+const methodOverride = require('method-override')
 const app = express()
 
 // models
@@ -25,10 +34,30 @@ const problems = require('./controllers/problems.js');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+// use body parser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+
+// serve all client-side assets in its public folder
+app.use(express.static('public'));
+
+// initialized
+// override with POST having ?_method=DELETE or ?_method=PUT
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
+
+app.use(methodOverride('_method'))
 
 // request handling, server calls
-problems(app);
 login(app);
+problems(app);
+
 
 // host app
 module.exports = app.listen(port, () => {

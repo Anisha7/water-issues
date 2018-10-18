@@ -6,7 +6,8 @@ const Problem = mongoose.model('Problem', {
   title: String,
   description: String,
   imagePath: String,
-  problemId: { type: String, required: true }
+  problemId: { type: String, required: true },
+  userId: Schema.Types.ObjectId // make sure this is the user ID
   //_someId: Schema.Types.ObjectId,
 });
 
