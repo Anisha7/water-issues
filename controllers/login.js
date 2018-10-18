@@ -77,12 +77,16 @@ module.exports = function (app) {
 
             // Attempt Authentication
             User.authenticate(req.body.username, req.body.password, function(error, user){
-
+                console.log("auth");
+                console.log(error);
               // Error or User not found in database (info did not match)
               if (error || !user) {
                 var err = new Error("Incorrect User or Password!");
                 err.status = 401;
-                return next(err);
+                console.log("yo")
+                //res.send("<p style='color:red'> Incorrect Username and Password. Try Again.");
+                res.send('Incorrect Username or Password');
+                return next();
               } else {
                   loggedIn = true;
                   // User Authenticated - Session / Cookie
