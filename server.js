@@ -1,16 +1,16 @@
 // variables
 const port = process.env.PORT || 5000;
 // initializing handlebars
-var exphbs = require('express-handlebars');
+const exphbs = require('express-handlebars');
 
 // mongoose
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
-const MongoStore = require('connect-mongo')(session);
-const db = mongoose.connection;
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
 
 // login
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const db = mongoose.connection;
 
 // INITIALIZE BODY-PARSER AND ADD IT TO APP
 const bodyParser = require('body-parser');
