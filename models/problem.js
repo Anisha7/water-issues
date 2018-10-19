@@ -1,6 +1,6 @@
 // problem.js Model
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/collabH', {useNewUrlParser: true});
 const Schema = mongoose.Schema
 
 const Problem = mongoose.model('Problem', {

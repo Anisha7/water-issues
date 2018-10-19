@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 
 // mongoose
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/collabH', {useNewUrlParser: true});
 
 // login
 const session = require('express-session');

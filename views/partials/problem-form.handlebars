@@ -1,4 +1,4 @@
-<!-- views/partials/reviews-form.handlebars -->
+<!-- views/partials/problem-form.handlebars -->
 
 <fieldset>
   <legend>Add Problem</legend>
@@ -14,10 +14,12 @@
     <textarea class="form-control" id="problem-description" name="description" rows="10" />{{problem.description}}</textarea>
   </div>
 
-  <div class="form-group">
-      <div style="height:0px;overflow:hidden">
-       <input type="file" id="fileInput" name="fileInput" />
-      </div>
-      <button type="button" onclick="chooseFile();">choose file</button>
-  </div>
+  <div>
+        <label for="problem-pic">Upload picture:</label>
+        <input type="file"
+               id="problem-pic" name="problem-pic"
+               accept="image/png, image/jpeg" />
+    </div>
 </fieldset>
+
+ <!-- part of solution-form:  -->

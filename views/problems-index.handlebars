@@ -1,8 +1,8 @@
 <!-- problems-show.handlebars -->
-<div class = "my-container">
+<div class = "my-container feed">
 <a class="btn btn-primary" href="/feed/new"> Add Problem </a>
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
+  <div class="col-sm-6 col-sm-offset-3 problem-feed">
       {{#each problem}}
       <a href="/feed/{{this._id}}"><h1>{{this.title}}</h1></a>
       <img src="{{this.imagePath}}">
@@ -13,6 +13,7 @@
             <button class="btn btn-primary" type="submit">Delete</button>
         </form>
     </p>
+    <hr>
     {{/each}}
   </div>
 </div>
