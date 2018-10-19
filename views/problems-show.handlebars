@@ -1,0 +1,17 @@
+<!-- <a href="/">Back</a> -->
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <h1>{{problem.title}}</h1>
+    <p>{{problem.description}}</p>
+
+    <p><a href="/feed/{{problem._id}}/edit">Edit</a></p>
+    <p>
+        <form method="POST" action="/feed/{{problem._id}}?_method=DELETE">
+            <button class="btn btn-primary" type="submit">Delete</button>
+        </form>
+    </p>
+
+
+
+
+</div>
