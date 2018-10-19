@@ -1,0 +1,19 @@
+<!-- problems-show.handlebars -->
+<div class = "my-container">
+<a class="btn btn-primary" href="/feed/new"> Add Problem </a>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+      {{#each problem}}
+      <a href="/feed/{{this._id}}"><h1>{{this.title}}</h1></a>
+      <img src="{{this.imagePath}}">
+      <h2>{{this.description}}</h2>
+      <p><a href="/feed/{{this._id}}/edit">Edit</a></p>
+    <p>
+        <form method="POST" action="/feed/{{this._id}}?_method=DELETE">
+            <button class="btn btn-primary" type="submit">Delete</button>
+        </form>
+    </p>
+    {{/each}}
+  </div>
+</div>
+</div>

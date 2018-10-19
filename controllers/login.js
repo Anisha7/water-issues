@@ -15,7 +15,7 @@ function addNewUser(req, res, next) {
      if (err) {
        return next(err)
      } else {
-         console.log("added to session");
+         //console.log("added to session");
          req.session.userId = user._id;
          return res.redirect('/');
      }
@@ -69,10 +69,6 @@ module.exports = function (app) {
     // posting information
     app.post('/login', function (req, res, next) {
           // Email and Password are not empty
-          console.log(req.body);
-          // WHY IS req.body empty???
-          console.log(req.body.username);
-          console.log(req.body.password);
           if (req.body.username && req.body.password) {
 
             // Attempt Authentication
@@ -83,8 +79,6 @@ module.exports = function (app) {
               if (error || !user) {
                 var err = new Error("Incorrect User or Password!");
                 err.status = 401;
-                console.log("yo")
-                //res.send("<p style='color:red'> Incorrect Username and Password. Try Again.");
                 res.send('Incorrect Username or Password');
                 return next();
               } else {
